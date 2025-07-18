@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - RideConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Ride<span class="logo-accent">Connect</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="login.html" class="nav-link">Log in</a></li>
+                        <li><a href="signup.html" class="nav-link signup-btn">Sign up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="contact-main">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-header">
+                    <h1>Contact Us</h1>
+                    <p>We're here to help! Get in touch with our support team.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-form-section">
+                        <h2>Send us a message</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" class="form-input" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="safety">Safety Concern</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" class="form-input" rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-section">
+                        <h2>Get in Touch</h2>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <h3>Email Support</h3>
+                                <p>Fastest response time</p>
+                                <a href="mailto:support@rideconnect.com">support@rideconnect.com</a>
+                            </div>
+
+                            <div class="contact-method">
+                                <h3>Phone Support</h3>
+                                <p>Monday - Friday, 9AM - 6PM PST</p>
+                                <a href="tel:+1-800-RIDECONNECT">+1 (800) 743-3266</a>
+                            </div>
+
+                            <div class="contact-method">
+                                <h3>Live Chat</h3>
+                                <p>Available 24/7 in the app</p>
+                                <a href="help-center.html">Start Chat</a>
+                            </div>
+                        </div>
+
+                        <div class="business-hours">
+                            <h3>Business Hours</h3>
+                            <ul>
+                                <li><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM PST</li>
+                                <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM PST</li>
+                                <li><strong>Sunday:</strong> Closed</li>
+                            </ul>
+                        </div>
+
+                        <div class="office-location">
+                            <h3>Office Location</h3>
+                            <address>
+                                RideConnect Technologies<br>
+                                123 Tech Street<br>
+                                San Francisco, CA 94105<br>
+                                United States
+                            </address>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>How do I report a safety concern?</h3>
+                            <p>If you experience or witness any safety issues, please contact us immediately at safety@rideconnect.com or use the in-app safety features.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>How do I delete my account?</h3>
+                            <p>You can delete your account from your profile settings, or contact support@rideconnect.com for assistance.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>What payment methods do you accept?</h3>
+                            <p>We support various payment methods including credit cards, debit cards, and digital wallets. Payment is handled directly between users.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>How do I become a verified driver?</h3>
+                            <p>Complete your profile verification in the app by providing your driver's license and vehicle information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>RideConnect</h3>
+                    <p>Connecting communities, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="safety.html">Safety</a></li>
+                            <li><a href="sustainability.html">Sustainability</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help-center.html">Help Center</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="privacy-policy.html">Privacy</a></li>
+                            <li><a href="terms-of-service.html">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RideConnect Technologies Inc.</p>
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">简体中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
