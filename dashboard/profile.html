@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - BuckeyeRide Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="profile.html" class="nav-link active">Profile</a></li>
+                        <li><a href="schedules.html" class="nav-link">Schedules</a></li>
+                        <li><a href="findmatches.html" class="nav-link">Find Matches</a></li>
+                        <li><a href="groups.html" class="nav-link">Groups</a></li>
+                        <li><a href="buddies.html" class="nav-link">Buddies</a></li>
+                        <li><a href="ride.html" class="nav-link">Ride</a></li>
+                        <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Complete Your Profile</h1>
+                <p>Help us find your perfect carpool matches by completing your profile information.</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-section">
+                <div class="progress-header">
+                    <h3>Profile Completion</h3>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text">Complete all sections to start finding matches</p>
+            </div>
+
+            <!-- Profile Form -->
+            <div class="profile-container">
+                <form class="profile-form" id="profileForm">
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Basic Information</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="form-section">
+                        <h2 class="section-title">Contact Details</h2>
+                        <div class="form-group">
+                            <label for="address">Home Address</label>
+                            <input type="text" id="address" name="address" class="form-input" placeholder="Enter your home address" required>
+                            <small class="form-help">This helps us find matches near you</small>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="emergencyName">Emergency Contact Name</label>
+                                <input type="text" id="emergencyName" name="emergencyName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="emergencyPhone">Emergency Contact Phone</label>
+                                <input type="tel" id="emergencyPhone" name="emergencyPhone" class="form-input" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="form-section">
+                        <h2 class="section-title">Ride Preferences</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="musicPreference">Music Preference</label>
+                                <select id="musicPreference" name="musicPreference" class="form-input" required>
+                                    <option value="">Select preference</option>
+                                    <option value="pop">Pop</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="hip-hop">Hip-Hop</option>
+                                    <option value="country">Country</option>
+                                    <option value="classical">Classical</option>
+                                    <option value="electronic">Electronic</option>
+                                    <option value="indie">Indie</option>
+                                    <option value="no-music">No Music/Quiet</option>
+                                    <option value="any">Any/No Preference</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="talkativeLevel">Talkativeness Level</label>
+                                <select id="talkativeLevel" name="talkativeLevel" class="form-input" required>
+                                    <option value="">Select level</option>
+                                    <option value="quiet">Quiet - Prefer minimal conversation</option>
+                                    <option value="moderate">Moderate - Some conversation is fine</option>
+                                    <option value="chatty">Chatty - Love to talk and connect</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Smoking Policy</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="smokingPolicy" value="no-smoking" required>
+                                        <span class="radio-custom"></span>
+                                        No Smoking
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="smokingPolicy" value="smoking-ok" required>
+                                        <span class="radio-custom"></span>
+                                        Smoking OK
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Pets Policy</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="petsPolicy" value="no-pets" required>
+                                        <span class="radio-custom"></span>
+                                        No Pets
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="petsPolicy" value="pets-ok" required>
+                                        <span class="radio-custom"></span>
+                                        Pets OK
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hobbies & Interests -->
+                    <div class="form-section">
+                        <h2 class="section-title">Hobbies & Interests</h2>
+                        <div class="form-group">
+                            <label for="hobbies">Tell us about your hobbies and interests</label>
+                            <textarea id="hobbies" name="hobbies" class="form-input" rows="4" placeholder="e.g., Reading, sports, gaming, music, cooking, traveling..." required></textarea>
+                            <small class="form-help">This helps us match you with like-minded riders</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="major">Major/Department (if applicable)</label>
+                            <input type="text" id="major" name="major" class="form-input" placeholder="e.g., Computer Science, Business, Engineering">
+                        </div>
+                    </div>
+
+                    <!-- Additional Preferences -->
+                    <div class="form-section">
+                        <h2 class="section-title">Additional Preferences</h2>
+                        <div class="form-group">
+                            <label for="rideNotes">Additional Notes</label>
+                            <textarea id="rideNotes" name="rideNotes" class="form-input" rows="3" placeholder="Any other preferences or information you'd like to share with potential carpool partners..."></textarea>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="flexibleTiming" id="flexibleTiming">
+                                <span class="checkmark"></span>
+                                I'm flexible with timing (±15 minutes)
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="shareGasCosts" id="shareGasCosts">
+                                <span class="checkmark"></span>
+                                I'm willing to share gas costs
+                            </label>
+                        </div>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="offerRides" id="offerRides">
+                                <span class="checkmark"></span>
+                                I can offer rides (I have a car)
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            Save Profile
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="skipProfile()">
+                            Skip for Now
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="findmatches.html">Find Matches</a></li>
+                            <li><a href="groups.html">Groups</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>
