@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups - BuckeyeRide Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="schedules.html" class="nav-link">Schedules</a></li>
+                        <li><a href="findmatches.html" class="nav-link">Find Matches</a></li>
+                        <li><a href="groups.html" class="nav-link active">Groups</a></li>
+                        <li><a href="buddies.html" class="nav-link">Buddies</a></li>
+                        <li><a href="ride.html" class="nav-link">Ride</a></li>
+                        <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Carpooling Groups</h1>
+                <p>Create and manage groups with friends, classmates, or coworkers for regular carpooling.</p>
+            </div>
+
+            <!-- Create Group Section -->
+            <div class="create-group-section">
+                <h2 class="section-title">Create New Group</h2>
+                <form class="group-form" id="groupForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="groupName">Group Name</label>
+                            <input 
+                                type="text" 
+                                id="groupName" 
+                                name="groupName" 
+                                class="form-input" 
+                                placeholder="e.g., Engineering Building Commuters"
+                                required
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="privacy">Privacy Setting</label>
+                            <select id="privacy" name="privacy" class="form-input">
+                                <option value="public">Public - Anyone can find and join</option>
+                                <option value="private">Private - Invite only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="groupDescription">Group Description</label>
+                        <textarea 
+                            id="groupDescription" 
+                            name="groupDescription" 
+                            class="form-input" 
+                            rows="3" 
+                            placeholder="Describe the purpose of your group, common routes, or any specific requirements..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inviteEmails">Invite Members (Optional)</label>
+                        <textarea 
+                            id="inviteEmails" 
+                            name="inviteEmails" 
+                            class="form-input" 
+                            rows="2" 
+                            placeholder="Enter OSU email addresses separated by commas"
+                        ></textarea>
+                        <small class="form-help">You can invite members later too</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commonRoutes">Common Routes</label>
+                        <input 
+                            type="text" 
+                            id="commonRoutes" 
+                            name="commonRoutes" 
+                            class="form-input" 
+                            placeholder="e.g., North Campus to Main Campus, Dorms to Library"
+                        >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        Create Group
+                    </button>
+                </form>
+            </div>
+
+            <!-- Your Groups -->
+            <div class="groups-section">
+                <h2 class="section-title">Your Groups</h2>
+                <div class="groups-grid" id="groupsList">
+                    <!-- Groups will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Discover Groups -->
+            <div class="discover-groups-section">
+                <h2 class="section-title">Discover Public Groups</h2>
+                <div class="search-groups">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input 
+                                type="text" 
+                                id="groupSearch" 
+                                class="form-input" 
+                                placeholder="Search groups by name or route..."
+                            >
+                        </div>
+                        <button class="btn btn-secondary" onclick="searchGroups()">Search</button>
+                    </div>
+                </div>
+                
+                <div class="public-groups-grid" id="publicGroupsList">
+                    <!-- Sample public groups -->
+                    <div class="group-card">
+                        <div class="group-header">
+                            <h3 class="group-name">North Campus Commuters</h3>
+                            <span class="group-members">12 members</span>
+                        </div>
+                        <p class="group-description">Daily rides between North Campus dorms and main campus. Morning and evening schedules available.</p>
+                        <div class="group-routes">
+                            <strong>Common Routes:</strong> North Campus ↔ Thompson Library, Oval
+                        </div>
+                        <div class="group-actions">
+                            <button class="btn btn-primary btn-small" onclick="joinGroup('north-campus')">Join Group</button>
+                            <button class="btn btn-secondary btn-small" onclick="viewGroupDetails('north-campus')">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <h3 class="group-name">Engineering Students</h3>
+                            <span class="group-members">8 members</span>
+                        </div>
+                        <p class="group-description">Carpooling group for engineering students. Regular trips to labs, libraries, and campus events.</p>
+                        <div class="group-routes">
+                            <strong>Common Routes:</strong> Various locations ↔ Engineering Buildings
+                        </div>
+                        <div class="group-actions">
+                            <button class="btn btn-primary btn-small" onclick="joinGroup('engineering')">Join Group</button>
+                            <button class="btn btn-secondary btn-small" onclick="viewGroupDetails('engineering')">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <h3 class="group-name">Weekend Warriors</h3>
+                            <span class="group-members">15 members</span>
+                        </div>
+                        <p class="group-description">For students who need rides on weekends - shopping, events, trips home, and social activities.</p>
+                        <div class="group-routes">
+                            <strong>Common Routes:</strong> Campus ↔ Easton, Polaris, Downtown
+                        </div>
+                        <div class="group-actions">
+                            <button class="btn btn-primary btn-small" onclick="joinGroup('weekend')">Join Group</button>
+                            <button class="btn btn-secondary btn-small" onclick="viewGroupDetails('weekend')">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="group-card">
+                        <div class="group-header">
+                            <h3 class="group-name">Graduate Students</h3>
+                            <span class="group-members">6 members</span>
+                        </div>
+                        <p class="group-description">Carpooling network for graduate students with flexible schedules and research commitments.</p>
+                        <div class="group-routes">
+                            <strong>Common Routes:</strong> Various research buildings, libraries
+                        </div>
+                        <div class="group-actions">
+                            <button class="btn btn-primary btn-small" onclick="joinGroup('grad-students')">Join Group</button>
+                            <button class="btn btn-secondary btn-small" onclick="viewGroupDetails('grad-students')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group Features -->
+            <div class="group-features-section">
+                <h2 class="section-title">Group Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Share Schedules</h3>
+                        <p>Share your regular schedules with group members to coordinate rides easily.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Group Matching</h3>
+                        <p>Find matches within your group first, then expand to the broader community.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Group Chat</h3>
+                        <p>Communicate with group members to coordinate rides and share updates.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Event Coordination</h3>
+                        <p>Organize group rides to campus events, games, and special occasions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="findmatches.html">Find Matches</a></li>
+                            <li><a href="groups.html">Groups</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        function searchGroups() {
+            const searchTerm = document.getElementById('groupSearch').value;
+            if (searchTerm.trim()) {
+                showNotification(`Searching for groups: "${searchTerm}"`, 'info');
+                // In a real app, this would filter the groups
+            }
+        }
+
+        function joinGroup(groupId) {
+            showNotification('Group join request sent! You will be notified when approved.', 'success');
+        }
+
+        function viewGroupDetails(groupId) {
+            showNotification('Group details feature coming soon!', 'info');
+        }
+
+        function shareScheduleWithGroup(groupId) {
+            showNotification('Schedule sharing feature coming soon!', 'info');
+        }
+
+        function viewGroup(groupId) {
+            showNotification('Group management feature coming soon!', 'info');
+        }
+    </script>
+</body>
+</html>
