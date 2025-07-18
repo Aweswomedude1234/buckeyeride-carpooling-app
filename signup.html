@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - BuckeyeRide</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="login.html" class="nav-link">Log in</a></li>
+                        <li><a href="signup.html" class="nav-link signup-btn active">Sign up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="auth-main">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-form-section">
+                    <div class="auth-header">
+                        <h1>Join BuckeyeRide</h1>
+                        <p>Create your account and start connecting with fellow Buckeyes</p>
+                    </div>
+
+                    <form class="auth-form" id="signupForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First name</label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    class="form-input" 
+                                    placeholder="Enter your first name"
+                                    required
+                                    autocomplete="given-name"
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last name</label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    class="form-input" 
+                                    placeholder="Enter your last name"
+                                    required
+                                    autocomplete="family-name"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">OSU Email address</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="yourname@osu.edu"
+                                required
+                                autocomplete="email"
+                                pattern=".*@osu\.edu$"
+                                title="Please use your OSU email address"
+                            >
+                            <small class="form-help">You must use your official OSU email address</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone number</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                placeholder="(614) 123-4567"
+                                required
+                                autocomplete="tel"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input" 
+                                placeholder="Create a strong password"
+                                required
+                                autocomplete="new-password"
+                                minlength="8"
+                            >
+                            <small class="form-help">Must be at least 8 characters long</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm password</label>
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                class="form-input" 
+                                placeholder="Confirm your password"
+                                required
+                                autocomplete="new-password"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userType">I am a:</label>
+                            <select id="userType" name="userType" class="form-input" required>
+                                <option value="">Select your affiliation</option>
+                                <option value="undergraduate">Undergraduate Student</option>
+                                <option value="graduate">Graduate Student</option>
+                                <option value="faculty">Faculty</option>
+                                <option value="staff">Staff</option>
+                                <option value="alumni">Alumni</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" id="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" id="newsletter">
+                                <span class="checkmark"></span>
+                                Send me updates about new features and community events
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Create Account
+                        </button>
+
+                        <div class="auth-divider">
+                            <span>or</span>
+                        </div>
+
+                        <button type="button" class="btn btn-secondary btn-full" onclick="signupWithOSU()">
+                            Sign up with OSU Account
+                        </button>
+                    </form>
+
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="login.html">Sign in</a></p>
+                    </div>
+                </div>
+
+                <div class="auth-info-section">
+                    <div class="auth-info">
+                        <h2>Why Choose BuckeyeRide?</h2>
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <h3>Smart Matching</h3>
+                                <p>Get paired with compatible riders based on your preferences and schedule</p>
+                            </div>
+                            <div class="feature-item">
+                                <h3>Group Carpooling</h3>
+                                <p>Create groups with friends and coordinate regular rides together</p>
+                            </div>
+                            <div class="feature-item">
+                                <h3>Safety First</h3>
+                                <p>OSU-verified users, ride tracking, and comprehensive safety features</p>
+                            </div>
+                            <div class="feature-item">
+                                <h3>Build Connections</h3>
+                                <p>Make lasting friendships through our carpooling buddy system</p>
+                            </div>
+                        </div>
+                        <div class="auth-testimonial">
+                            <blockquote>
+                                "BuckeyeRide helped me save money and make great friends during my time at OSU!"
+                            </blockquote>
+                            <cite>- Sarah M., Senior</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="#">Safety</a></li>
+                            <li><a href="#">Sustainability</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
