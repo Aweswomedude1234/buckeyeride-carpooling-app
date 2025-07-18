@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability - RideConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>Ride<span class="logo-accent">Connect</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="login.html" class="nav-link">Log in</a></li>
+                        <li><a href="signup.html" class="nav-link signup-btn">Sign up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="sustainability-main">
+        <div class="container">
+            <div class="sustainability-content">
+                <div class="sustainability-header">
+                    <h1>Driving Toward a Greener Future</h1>
+                    <p>Every shared ride reduces emissions and builds a more sustainable transportation network.</p>
+                </div>
+
+                <div class="impact-section">
+                    <h2>Our Environmental Impact</h2>
+                    <div class="impact-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">2.3M</div>
+                            <div class="stat-label">Pounds of CO2 Saved</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1.8M</div>
+                            <div class="stat-label">Miles Shared</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">85K</div>
+                            <div class="stat-label">Gallons of Fuel Saved</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sustainability-grid">
+                    <div class="sustainability-section">
+                        <h2>How Carpooling Helps</h2>
+                        <div class="benefits-grid">
+                            <div class="benefit-card">
+                                <h3>Reduce Emissions</h3>
+                                <p>Every shared ride can reduce CO2 emissions by up to 50% compared to individual driving.</p>
+                            </div>
+                            <div class="benefit-card">
+                                <h3>Save Resources</h3>
+                                <p>Less fuel consumption means reduced demand for fossil fuels and lower environmental impact.</p>
+                            </div>
+                            <div class="benefit-card">
+                                <h3>Decrease Traffic</h3>
+                                <p>Fewer cars on the road means less congestion and reduced infrastructure strain.</p>
+                            </div>
+                            <div class="benefit-card">
+                                <h3>Build Community</h3>
+                                <p>Shared transportation builds stronger, more connected communities.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sustainability-section">
+                        <h2>Our Commitment</h2>
+                        <div class="commitments-list">
+                            <div class="commitment-item">
+                                <h3>Carbon Neutral Operations</h3>
+                                <p>We offset 100% of our operational carbon footprint through verified carbon offset programs.</p>
+                            </div>
+                            <div class="commitment-item">
+                                <h3>Renewable Energy</h3>
+                                <p>Our servers and offices run on 100% renewable energy sources.</p>
+                            </div>
+                            <div class="commitment-item">
+                                <h3>Sustainable Partnerships</h3>
+                                <p>We partner with organizations committed to environmental sustainability.</p>
+                            </div>
+                            <div class="commitment-item">
+                                <h3>Continuous Improvement</h3>
+                                <p>We regularly assess and improve our environmental impact across all operations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sustainability-section">
+                        <h2>Calculate Your Impact</h2>
+                        <div class="calculator-section">
+                            <p>Use our impact calculator to see how much you could reduce your carbon footprint by carpooling:</p>
+                            <div class="calculator-form">
+                                <div class="form-group">
+                                    <label>Your daily commute (miles):</label>
+                                    <input type="number" id="commute-distance" class="form-input" placeholder="e.g., 20">
+                                </div>
+                                <div class="form-group">
+                                    <label>Days per week you commute:</label>
+                                    <input type="number" id="commute-days" class="form-input" placeholder="e.g., 5">
+                                </div>
+                                <button class="btn btn-primary" onclick="calculateImpact()">Calculate Impact</button>
+                                <div id="impact-result" class="impact-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sustainability-cta">
+                    <h2>Join the Movement</h2>
+                    <p>Start reducing your carbon footprint today by sharing rides with your community.</p>
+                    <a href="signup.html" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>RideConnect</h3>
+                    <p>Connecting communities, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="safety.html">Safety</a></li>
+                            <li><a href="sustainability.html">Sustainability</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help-center.html">Help Center</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="privacy-policy.html">Privacy</a></li>
+                            <li><a href="terms-of-service.html">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RideConnect Technologies Inc.</p>
+                <div class="language-selector">
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">简体中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function calculateImpact() {
+            const distance = document.getElementById('commute-distance').value;
+            const days = document.getElementById('commute-days').value;
+            
+            if (distance && days) {
+                const weeklyMiles = distance * days * 2; // Round trip
+                const yearlyMiles = weeklyMiles * 52;
+                const co2Saved = (yearlyMiles * 0.89 * 0.5).toFixed(1); // 0.89 lbs CO2 per mile, 50% reduction
+                
+                document.getElementById('impact-result').innerHTML = `
+                    <h3>Your Potential Annual Impact:</h3>
+                    <p><strong>${co2Saved} lbs of CO2 saved</strong></p>
+                    <p>${(yearlyMiles * 0.5).toFixed(0)} miles shared</p>
+                    <p>${(yearlyMiles / 25 * 0.5).toFixed(0)} gallons of fuel saved</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
