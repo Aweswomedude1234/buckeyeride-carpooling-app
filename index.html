@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuckeyeRide - Ride Better Together</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="login.html" class="nav-link">Log in</a></li>
+                        <li><a href="signup.html" class="nav-link signup-btn">Sign up</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Ride Better Together</h1>
+                    <p class="hero-subtitle">Connect with fellow Buckeyes for safe, convenient carpooling. Share rides, make friends, and save money on your daily commute.</p>
+                    
+                    <!-- Ride Search Form -->
+                    <div class="ride-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Pickup location" class="form-input" id="pickup">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Dropoff location" class="form-input" id="dropoff">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="date" class="form-input" id="date">
+                            </div>
+                            <div class="form-group">
+                                <input type="time" class="form-input" id="time" value="now">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="handleRideSearch()">Find Rides</button>
+                        <p class="login-prompt">
+                            <a href="login.html">Log in to see your recent activity</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_368,w_552/v1712926828/assets/a3/cf8564-e2a6-418c-b9b0-65dd285c100b/original/3-2-ridesharing-new.jpg" alt="Students carpooling together" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose BuckeyeRide?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Smart Matching</h3>
+                    <p>Get matched with compatible riders based on your preferences for music, smoking, pets, and conversation style.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Group Carpooling</h3>
+                    <p>Create groups with friends, classmates, or coworkers to easily coordinate regular rides and share schedules.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Carpooling Buddies</h3>
+                    <p>Build lasting connections with regular ride partners and enjoy priority matching with your trusted buddies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-content">
+                <div class="account-text">
+                    <h2>Log in to see your account details</h2>
+                    <p>View past trips, tailored suggestions, support resources, and more.</p>
+                    <div class="account-buttons">
+                        <a href="login.html" class="btn btn-primary">Log in to your account</a>
+                        <a href="signup.html" class="btn btn-secondary">Create an account</a>
+                    </div>
+                </div>
+                <div class="account-image">
+                    <img src="https://www.uber-assets.com/image/upload/v1751572089/assets/e0/a5a30d-9b07-4094-acc3-0a26203434cd/original/Signup-%282%29.svg" alt="Account signup illustration" class="account-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Driver Section -->
+    <section class="driver-section">
+        <div class="container">
+            <div class="driver-content">
+                <div class="driver-image">
+                    <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_552,w_552/v1684855112/assets/96/4dd3d1-94e7-481e-b28c-08d59353b9e0/original/earner-illustra.png" alt="Driver illustration" class="driver-img">
+                </div>
+                <div class="driver-text">
+                    <h2>Share rides, earn money, make friends</h2>
+                    <p>Offer rides on your schedule and connect with fellow students. Share gas costs, reduce your carbon footprint, and build your campus community.</p>
+                    <div class="driver-buttons">
+                        <a href="signup.html" class="btn btn-primary">Get started</a>
+                        <a href="login.html" class="btn btn-secondary">Already have an account? Sign in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Groups Section -->
+    <section class="groups-section">
+        <div class="container">
+            <div class="groups-content">
+                <div class="groups-text">
+                    <h2>Create groups for regular carpooling</h2>
+                    <p>Organize carpooling groups with your friends, classmates, or coworkers. Share schedules, coordinate rides, and build a reliable transportation network.</p>
+                    <div class="groups-buttons">
+                        <a href="signup.html" class="btn btn-primary">Create a group</a>
+                        <a href="about.html" class="btn btn-secondary">Learn more</a>
+                    </div>
+                </div>
+                <div class="groups-image">
+                    <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_552,w_552/v1684887108/assets/76/baf1ea-385a-408c-846b-59211086196c/original/u4b-square.png" alt="Group carpooling illustration" class="groups-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="app-section">
+        <div class="container">
+            <h2 class="section-title">It's easier in the app</h2>
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-content">
+                        <h3>Download the BuckeyeRide app</h3>
+                        <p>Scan to download</p>
+                        <div class="qr-placeholder">QR Code</div>
+                    </div>
+                </div>
+                <div class="app-card">
+                    <div class="app-content">
+                        <h3>Get the mobile experience</h3>
+                        <p>Access all features on the go</p>
+                        <div class="qr-placeholder">QR Code</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="#">Safety</a></li>
+                            <li><a href="#">Sustainability</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="#">Ride</a></li>
+                            <li><a href="#">Groups</a></li>
+                            <li><a href="#">Buddies</a></li>
+                            <li><a href="#">Schedules</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+                <div class="language-selector">
+                    <select>
+                        <option>English</option>
+                        <option>Español</option>
+                        <option>简体中文</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
