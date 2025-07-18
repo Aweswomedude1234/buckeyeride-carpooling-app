@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpooling Buddies - BuckeyeRide Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="schedules.html" class="nav-link">Schedules</a></li>
+                        <li><a href="findmatches.html" class="nav-link">Find Matches</a></li>
+                        <li><a href="groups.html" class="nav-link">Groups</a></li>
+                        <li><a href="buddies.html" class="nav-link active">Buddies</a></li>
+                        <li><a href="ride.html" class="nav-link">Ride</a></li>
+                        <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Your Carpooling Buddies</h1>
+                <p>Build lasting connections with your favorite carpool partners and get priority matching.</p>
+            </div>
+
+            <!-- Buddy Tabs -->
+            <div class="buddies-tabs">
+                <button class="tab-button active" data-tab="current-buddies" onclick="switchBuddyTab(this, 'current-buddies')">
+                    My Buddies
+                </button>
+                <button class="tab-button" data-tab="pending-requests" onclick="switchBuddyTab(this, 'pending-requests')">
+                    Pending Requests
+                </button>
+                <button class="tab-button" data-tab="sent-requests" onclick="switchBuddyTab(this, 'sent-requests')">
+                    Sent Requests
+                </button>
+            </div>
+
+            <!-- Current Buddies Tab -->
+            <div class="tab-content active" id="current-buddies">
+                <div class="buddies-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Your Carpooling Buddies</h2>
+                        <p>These are your trusted carpool partners who get priority in your search results.</p>
+                    </div>
+                    
+                    <div class="buddies-list" id="buddiesList">
+                        <!-- Sample buddies for demonstration -->
+                        <div class="buddy-item">
+                            <div class="buddy-header">
+                                <div class="buddy-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Engineering Student • Buddies since Oct 2024</p>
+                                </div>
+                                <div class="buddy-rating">
+                                    <span class="rating">★★★★★</span>
+                                    <span class="rating-text">5.0</span>
+                                </div>
+                            </div>
+                            <div class="buddy-stats">
+                                <div class="buddy-stat">
+                                    <strong>12</strong>
+                                    <span>Rides Together</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>95%</strong>
+                                    <span>Compatibility</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>Always</strong>
+                                    <span>On Time</span>
+                                </div>
+                            </div>
+                            <div class="buddy-preferences">
+                                <span class="preference-tag">Pop Music</span>
+                                <span class="preference-tag">No Smoking</span>
+                                <span class="preference-tag">Moderate Talking</span>
+                                <span class="preference-tag">No Pets</span>
+                            </div>
+                            <div class="buddy-actions">
+                                <button class="btn btn-primary btn-small" onclick="messagebuddy('sarah')">Message</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewBuddySchedules('sarah')">View Schedules</button>
+                                <button class="btn btn-secondary btn-small" onclick="removeBuddy('sarah')">Remove Buddy</button>
+                            </div>
+                        </div>
+
+                        <div class="buddy-item">
+                            <div class="buddy-header">
+                                <div class="buddy-info">
+                                    <h4>Mike Chen</h4>
+                                    <p>Graduate Student • Buddies since Sep 2024</p>
+                                </div>
+                                <div class="buddy-rating">
+                                    <span class="rating">★★★★☆</span>
+                                    <span class="rating-text">4.8</span>
+                                </div>
+                            </div>
+                            <div class="buddy-stats">
+                                <div class="buddy-stat">
+                                    <strong>8</strong>
+                                    <span>Rides Together</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>87%</strong>
+                                    <span>Compatibility</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>Usually</strong>
+                                    <span>On Time</span>
+                                </div>
+                            </div>
+                            <div class="buddy-preferences">
+                                <span class="preference-tag">Any Music</span>
+                                <span class="preference-tag">No Smoking</span>
+                                <span class="preference-tag">Chatty</span>
+                                <span class="preference-tag">Pets OK</span>
+                            </div>
+                            <div class="buddy-actions">
+                                <button class="btn btn-primary btn-small" onclick="messageBuddy('mike')">Message</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewBuddySchedules('mike')">View Schedules</button>
+                                <button class="btn btn-secondary btn-small" onclick="removeBuddy('mike')">Remove Buddy</button>
+                            </div>
+                        </div>
+
+                        <div class="no-buddies-message" style="display: none;">
+                            <h3>No Carpooling Buddies Yet</h3>
+                            <p>Complete some rides and send buddy requests to build your network!</p>
+                            <a href="findmatches.html" class="btn btn-primary">Find Matches</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Requests Tab -->
+            <div class="tab-content" id="pending-requests">
+                <div class="requests-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Pending Buddy Requests</h2>
+                        <p>People who want to become your carpooling buddy.</p>
+                    </div>
+                    
+                    <div class="requests-list">
+                        <div class="buddy-item">
+                            <div class="buddy-header">
+                                <div class="buddy-info">
+                                    <h4>Emma Davis</h4>
+                                    <p>Undergraduate Student • Sent request 2 days ago</p>
+                                </div>
+                                <div class="request-badge">
+                                    <span class="badge pending">Pending</span>
+                                </div>
+                            </div>
+                            <div class="buddy-stats">
+                                <div class="buddy-stat">
+                                    <strong>3</strong>
+                                    <span>Rides Together</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>92%</strong>
+                                    <span>Compatibility</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>Always</strong>
+                                    <span>On Time</span>
+                                </div>
+                            </div>
+                            <div class="buddy-preferences">
+                                <span class="preference-tag">Indie Music</span>
+                                <span class="preference-tag">No Smoking</span>
+                                <span class="preference-tag">Quiet</span>
+                                <span class="preference-tag">No Pets</span>
+                            </div>
+                            <div class="buddy-actions">
+                                <button class="btn btn-primary btn-small" onclick="acceptBuddyRequest('emma')">Accept</button>
+                                <button class="btn btn-secondary btn-small" onclick="declineBuddyRequest('emma')">Decline</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewProfile('emma')">View Profile</button>
+                            </div>
+                        </div>
+
+                        <div class="no-requests-message" style="display: none;">
+                            <h3>No Pending Requests</h3>
+                            <p>When someone sends you a buddy request, it will appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sent Requests Tab -->
+            <div class="tab-content" id="sent-requests">
+                <div class="requests-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Sent Buddy Requests</h2>
+                        <p>Buddy requests you've sent that are waiting for a response.</p>
+                    </div>
+                    
+                    <div class="requests-list">
+                        <div class="buddy-item">
+                            <div class="buddy-header">
+                                <div class="buddy-info">
+                                    <h4>Alex Rodriguez</h4>
+                                    <p>Faculty Member • Request sent 1 week ago</p>
+                                </div>
+                                <div class="request-badge">
+                                    <span class="badge waiting">Waiting</span>
+                                </div>
+                            </div>
+                            <div class="buddy-stats">
+                                <div class="buddy-stat">
+                                    <strong>1</strong>
+                                    <span>Rides Together</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>89%</strong>
+                                    <span>Compatibility</span>
+                                </div>
+                                <div class="buddy-stat">
+                                    <strong>On Time</strong>
+                                    <span>Punctual</span>
+                                </div>
+                            </div>
+                            <div class="buddy-preferences">
+                                <span class="preference-tag">Classical Music</span>
+                                <span class="preference-tag">No Smoking</span>
+                                <span class="preference-tag">Moderate Talking</span>
+                                <span class="preference-tag">No Pets</span>
+                            </div>
+                            <div class="buddy-actions">
+                                <button class="btn btn-secondary btn-small" onclick="cancelBuddyRequest('alex')">Cancel Request</button>
+                                <button class="btn btn-secondary btn-small" onclick="viewProfile('alex')">View Profile</button>
+                            </div>
+                        </div>
+
+                        <div class="no-sent-requests-message" style="display: none;">
+                            <h3>No Sent Requests</h3>
+                            <p>After completing rides, you can send buddy requests to your favorite carpool partners.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buddy Benefits -->
+            <div class="buddy-benefits-section">
+                <h2 class="section-title">Benefits of Carpooling Buddies</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h3>Priority Matching</h3>
+                        <p>Your buddies appear first in search results, making it easier to coordinate regular rides.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Trusted Partners</h3>
+                        <p>Build relationships with reliable riders who share your preferences and schedules.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Easy Communication</h3>
+                        <p>Direct messaging with your buddies for quick ride coordination and updates.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>Consistent Experience</h3>
+                        <p>Enjoy predictable, comfortable rides with people you know and trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="findmatches.html">Find Matches</a></li>
+                            <li><a href="groups.html">Groups</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        function switchBuddyTab(button, tabId) {
+            // Remove active class from all buttons and tabs
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding tab
+            button.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function messageBuddy(buddyId) {
+            showNotification('Messaging feature coming soon!', 'info');
+        }
+
+        function viewBuddySchedules(buddyId) {
+            showNotification('Buddy schedules feature coming soon!', 'info');
+        }
+
+        function removeBuddy(buddyId) {
+            if (confirm('Are you sure you want to remove this buddy? You can always send another request later.')) {
+                showSuccessMessage('Buddy removed successfully.');
+            }
+        }
+
+        function acceptBuddyRequest(requestId) {
+            showSuccessMessage('Buddy request accepted! They have been added to your buddies list.');
+        }
+
+        function declineBuddyRequest(requestId) {
+            if (confirm('Are you sure you want to decline this buddy request?')) {
+                showNotification('Buddy request declined.', 'info');
+            }
+        }
+
+        function cancelBuddyRequest(requestId) {
+            if (confirm('Are you sure you want to cancel this buddy request?')) {
+                showNotification('Buddy request cancelled.', 'info');
+            }
+        }
+
+        function viewProfile(profileId) {
+            showNotification('Profile viewing feature coming soon!', 'info');
+        }
+    </script>
+</body>
+</html>
