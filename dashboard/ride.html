@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Ride - BuckeyeRide Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="schedules.html" class="nav-link">Schedules</a></li>
+                        <li><a href="findmatches.html" class="nav-link">Find Matches</a></li>
+                        <li><a href="groups.html" class="nav-link">Groups</a></li>
+                        <li><a href="buddies.html" class="nav-link">Buddies</a></li>
+                        <li><a href="ride.html" class="nav-link active">Ride</a></li>
+                        <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="dashboard-main">
+        <div class="container">
+            <div class="ride-container">
+                <!-- Ride Status -->
+                <div class="ride-status" id="rideStatus">
+                    <h2 id="rideStatusTitle">Ready to Start Your Ride?</h2>
+                    <p id="rideStatusMessage">Check in when you're ready to begin your carpool journey.</p>
+                    
+                    <!-- Ride Information -->
+                    <div class="ride-info" id="rideInfo">
+                        <div class="ride-detail">
+                            <strong>Route:</strong> North Campus → Thompson Library
+                        </div>
+                        <div class="ride-detail">
+                            <strong>Partner:</strong> Sarah Johnson
+                        </div>
+                        <div class="ride-detail">
+                            <strong>Scheduled Time:</strong> 8:00 AM
+                        </div>
+                        <div class="ride-detail">
+                            <strong>Date:</strong> Today
+                        </div>
+                    </div>
+
+                    <!-- Ride Actions -->
+                    <div class="ride-actions" id="rideActions">
+                        <button class="btn btn-primary btn-large" id="checkInBtn" onclick="checkIn()">
+                            Check In
+                        </button>
+                        <button class="btn btn-secondary" onclick="cancelRide()">
+                            Cancel Ride
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Safety Information -->
+                <div class="safety-info-section">
+                    <h3>Safety Reminders</h3>
+                    <ul class="safety-list">
+                        <li>Verify your ride partner's identity before getting in the car</li>
+                        <li>Share your ride details with a trusted friend or family member</li>
+                        <li>Keep your phone charged and accessible</li>
+                        <li>Trust your instincts - if something feels wrong, don't hesitate to leave</li>
+                        <li>Use the emergency contact feature if needed</li>
+                    </ul>
+                    <div class="emergency-contact">
+                        <button class="btn btn-secondary btn-small" onclick="contactEmergency()">
+                            Emergency Contact
+                        </button>
+                        <button class="btn btn-secondary btn-small" onclick="reportIssue()">
+                            Report Issue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rating Section (Hidden initially) -->
+                <div class="rating-section" id="ratingSection">
+                    <h2>How was your ride?</h2>
+                    <p>Rate your experience with Sarah Johnson</p>
+                    
+                    <div class="rating-form">
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-rating="1" onclick="setRating(1)">★</span>
+                            <span class="star" data-rating="2" onclick="setRating(2)">★</span>
+                            <span class="star" data-rating="3" onclick="setRating(3)">★</span>
+                            <span class="star" data-rating="4" onclick="setRating(4)">★</span>
+                            <span class="star" data-rating="5" onclick="setRating(5)">★</span>
+                        </div>
+                        
+                        <div class="rating-categories">
+                            <div class="rating-category">
+                                <label>Punctuality</label>
+                                <div class="category-rating">
+                                    <span class="category-star" data-category="punctuality" data-rating="1" onclick="setCategoryRating('punctuality', 1)">★</span>
+                                    <span class="category-star" data-category="punctuality" data-rating="2" onclick="setCategoryRating('punctuality', 2)">★</span>
+                                    <span class="category-star" data-category="punctuality" data-rating="3" onclick="setCategoryRating('punctuality', 3)">★</span>
+                                    <span class="category-star" data-category="punctuality" data-rating="4" onclick="setCategoryRating('punctuality', 4)">★</span>
+                                    <span class="category-star" data-category="punctuality" data-rating="5" onclick="setCategoryRating('punctuality', 5)">★</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-category">
+                                <label>Safety</label>
+                                <div class="category-rating">
+                                    <span class="category-star" data-category="safety" data-rating="1" onclick="setCategoryRating('safety', 1)">★</span>
+                                    <span class="category-star" data-category="safety" data-rating="2" onclick="setCategoryRating('safety', 2)">★</span>
+                                    <span class="category-star" data-category="safety" data-rating="3" onclick="setCategoryRating('safety', 3)">★</span>
+                                    <span class="category-star" data-category="safety" data-rating="4" onclick="setCategoryRating('safety', 4)">★</span>
+                                    <span class="category-star" data-category="safety" data-rating="5" onclick="setCategoryRating('safety', 5)">★</span>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-category">
+                                <label>Communication</label>
+                                <div class="category-rating">
+                                    <span class="category-star" data-category="communication" data-rating="1" onclick="setCategoryRating('communication', 1)">★</span>
+                                    <span class="category-star" data-category="communication" data-rating="2" onclick="setCategoryRating('communication', 2)">★</span>
+                                    <span class="category-star" data-category="communication" data-rating="3" onclick="setCategoryRating('communication', 3)">★</span>
+                                    <span class="category-star" data-category="communication" data-rating="4" onclick="setCategoryRating('communication', 4)">★</span>
+                                    <span class="category-star" data-category="communication" data-rating="5" onclick="setCategoryRating('communication', 5)">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rideComment">Additional Comments (Optional)</label>
+                            <textarea 
+                                id="rideComment" 
+                                class="form-input" 
+                                rows="3" 
+                                placeholder="Share any additional feedback about your ride experience..."
+                            ></textarea>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="submitRating()">
+                            Submit Rating
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buddy Request Section (Hidden initially) -->
+                <div class="buddy-request-section" id="buddyRequestSection">
+                    <h3>Enjoyed riding with Sarah?</h3>
+                    <p>Send a buddy request to make future carpooling even easier! Buddies get priority matching and can coordinate rides more efficiently.</p>
+                    
+                    <div class="buddy-request-benefits">
+                        <div class="benefit-item">
+                            <strong>Priority Matching:</strong> Your buddies appear first in search results
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Easy Coordination:</strong> Direct messaging for quick ride planning
+                        </div>
+                        <div class="benefit-item">
+                            <strong>Trusted Network:</strong> Build relationships with reliable carpool partners
+                        </div>
+                    </div>
+                    
+                    <div class="buddy-request-actions">
+                        <button class="btn btn-primary btn-large" onclick="sendBuddyRequest()">
+                            Send Buddy Request
+                        </button>
+                        <button class="btn btn-secondary" onclick="skipBuddyRequest()">
+                            Maybe Later
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ride History -->
+                <div class="ride-history-section">
+                    <h3>Recent Rides</h3>
+                    <div class="ride-history-list">
+                        <div class="history-item">
+                            <div class="history-header">
+                                <strong>North Campus → Library</strong>
+                                <span class="history-date">Yesterday, 8:00 AM</span>
+                            </div>
+                            <div class="history-details">
+                                <span>With Mike Chen</span>
+                                <span class="history-rating">★★★★★</span>
+                            </div>
+                        </div>
+                        
+                        <div class="history-item">
+                            <div class="history-header">
+                                <strong>Dorms → Engineering Building</strong>
+                                <span class="history-date">Oct 28, 2:00 PM</span>
+                            </div>
+                            <div class="history-details">
+                                <span>With Emma Davis</span>
+                                <span class="history-rating">★★★★☆</span>
+                            </div>
+                        </div>
+                        
+                        <div class="history-item">
+                            <div class="history-header">
+                                <strong>Campus → Downtown</strong>
+                                <span class="history-date">Oct 25, 6:30 PM</span>
+                            </div>
+                            <div class="history-details">
+                                <span>With Sarah Johnson</span>
+                                <span class="history-rating">★★★★★</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-stats">
+                        <div class="stat-item">
+                            <strong>15</strong>
+                            <span>Total Rides</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>4.8</strong>
+                            <span>Average Rating</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>$127</strong>
+                            <span>Money Saved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="findmatches.html">Find Matches</a></li>
+                            <li><a href="groups.html">Groups</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        let rideState = 'ready'; // ready, active, completed
+        let currentRating = 0;
+        let categoryRatings = {
+            punctuality: 0,
+            safety: 0,
+            communication: 0
+        };
+
+        function checkIn() {
+            if (rideState === 'ready') {
+                rideState = 'active';
+                updateRideStatus();
+                showSuccessMessage('Checked in successfully! Have a safe ride.');
+            }
+        }
+
+        function checkOut() {
+            if (rideState === 'active') {
+                rideState = 'completed';
+                updateRideStatus();
+                showRatingSection();
+                showSuccessMessage('Checked out successfully! Please rate your ride.');
+            }
+        }
+
+        function updateRideStatus() {
+            const statusTitle = document.getElementById('rideStatusTitle');
+            const statusMessage = document.getElementById('rideStatusMessage');
+            const rideActions = document.getElementById('rideActions');
+
+            if (rideState === 'active') {
+                statusTitle.textContent = 'Ride in Progress';
+                statusMessage.textContent = 'You are currently on your ride. Check out when you arrive at your destination.';
+                rideActions.innerHTML = `
+                    <button class="btn btn-primary btn-large" onclick="checkOut()">
+                        Check Out
+                    </button>
+                    <button class="btn btn-secondary" onclick="contactEmergency()">
+                        Emergency
+                    </button>
+                `;
+            } else if (rideState === 'completed') {
+                statusTitle.textContent = 'Ride Completed';
+                statusMessage.textContent = 'Thank you for using BuckeyeRide! Please rate your experience.';
+                rideActions.style.display = 'none';
+            }
+        }
+
+        function showRatingSection() {
+            document.getElementById('ratingSection').classList.add('active');
+            document.getElementById('buddyRequestSection').style.display = 'block';
+        }
+
+        function setRating(rating) {
+            currentRating = rating;
+            const stars = document.querySelectorAll('#starRating .star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function setCategoryRating(category, rating) {
+            categoryRatings[category] = rating;
+            const stars = document.querySelectorAll(`[data-category="${category}"]`);
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        function submitRating() {
+            if (currentRating === 0) {
+                showErrorMessage('Please provide an overall rating before submitting.');
+                return;
+            }
+
+            const comment = document.getElementById('rideComment').value;
+            
+            // Simulate rating submission
+            const ratingData = {
+                overallRating: currentRating,
+                categoryRatings: categoryRatings,
+                comment: comment,
+                ridePartner: 'Sarah Johnson',
+                timestamp: new Date().toISOString()
+            };
+
+            console.log('Rating submitted:', ratingData);
+            showSuccessMessage('Thank you for your feedback! Your rating has been submitted.');
+            
+            // Hide rating section and show buddy request
+            document.getElementById('ratingSection').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('buddyRequestSection').scrollIntoView({ behavior: 'smooth' });
+            }, 1000);
+        }
+
+        function sendBuddyRequest() {
+            showSuccessMessage('Buddy request sent to Sarah Johnson! You\'ll be notified when they respond.');
+            document.getElementById('buddyRequestSection').style.display = 'none';
+            
+            // Redirect to dashboard after a delay
+            setTimeout(() => {
+                window.location.href = 'findmatches.html';
+            }, 2000);
+        }
+
+        function skipBuddyRequest() {
+            document.getElementById('buddyRequestSection').style.display = 'none';
+            showNotification('You can send buddy requests later from the Buddies page.', 'info');
+            
+            // Redirect to dashboard after a delay
+            setTimeout(() => {
+                window.location.href = 'findmatches.html';
+            }, 2000);
+        }
+
+        function cancelRide() {
+            if (confirm('Are you sure you want to cancel this ride? Your ride partner will be notified.')) {
+                showNotification('Ride cancelled. Your partner has been notified.', 'info');
+                setTimeout(() => {
+                    window.location.href = 'findmatches.html';
+                }, 1500);
+            }
+        }
+
+        function contactEmergency() {
+            if (confirm('This will contact emergency services and your emergency contact. Do you want to proceed?')) {
+                showNotification('Emergency contacts have been notified. Stay safe!', 'info');
+            }
+        }
+
+        function reportIssue() {
+            showNotification('Issue reporting feature coming soon. For immediate concerns, use the emergency contact.', 'info');
+        }
+
+        // Initialize star rating hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.star, .category-star');
+            stars.forEach(star => {
+                star.addEventListener('mouseenter', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    const category = this.getAttribute('data-category');
+                    
+                    if (category) {
+                        const categoryStars = document.querySelectorAll(`[data-category="${category}"]`);
+                        categoryStars.forEach((s, index) => {
+                            if (index < rating) {
+                                s.style.color = '#FFD700';
+                            } else {
+                                s.style.color = '';
+                            }
+                        });
+                    } else {
+                        const allStars = document.querySelectorAll('#starRating .star');
+                        allStars.forEach((s, index) => {
+                            if (index < rating) {
+                                s.style.color = '#FFD700';
+                            } else {
+                                s.style.color = '';
+                            }
+                        });
+                    }
+                });
+
+                star.addEventListener('mouseleave', function() {
+                    // Reset colors based on current selection
+                    const category = this.getAttribute('data-category');
+                    if (category) {
+                        const categoryStars = document.querySelectorAll(`[data-category="${category}"]`);
+                        categoryStars.forEach((s, index) => {
+                            if (index < categoryRatings[category]) {
+                                s.style.color = '#FFD700';
+                            } else {
+                                s.style.color = '';
+                            }
+                        });
+                    } else {
+                        const allStars = document.querySelectorAll('#starRating .star');
+                        allStars.forEach((s, index) => {
+                            if (index < currentRating) {
+                                s.style.color = '#FFD700';
+                            } else {
+                                s.style.color = '';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
