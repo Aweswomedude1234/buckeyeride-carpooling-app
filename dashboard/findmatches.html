@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Matches - BuckeyeRide Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="schedules.html" class="nav-link">Schedules</a></li>
+                        <li><a href="findmatches.html" class="nav-link active">Find Matches</a></li>
+                        <li><a href="groups.html" class="nav-link">Groups</a></li>
+                        <li><a href="buddies.html" class="nav-link">Buddies</a></li>
+                        <li><a href="ride.html" class="nav-link">Ride</a></li>
+                        <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Find Your Perfect Carpool Match</h1>
+                <p>Use our smart filters to find compatible riders based on your preferences and schedule.</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <h2 class="section-title">Search Filters</h2>
+                <form class="filters-form" id="filtersForm">
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <label for="startLocation">Start Location</label>
+                            <input 
+                                type="text" 
+                                id="startLocation" 
+                                name="startLocation" 
+                                class="form-input" 
+                                placeholder="Enter pickup location"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="endLocation">End Location</label>
+                            <input 
+                                type="text" 
+                                id="endLocation" 
+                                name="endLocation" 
+                                class="form-input" 
+                                placeholder="Enter destination"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="travelDate">Date</label>
+                            <input 
+                                type="date" 
+                                id="travelDate" 
+                                name="travelDate" 
+                                class="form-input"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="travelTime">Time</label>
+                            <input 
+                                type="time" 
+                                id="travelTime" 
+                                name="travelTime" 
+                                class="form-input"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <label for="startLocationRadius">Start Location Radius (miles)</label>
+                            <select id="startLocationRadius" name="startLocationRadius" class="form-input">
+                                <option value="1">Within 1 mile</option>
+                                <option value="3">Within 3 miles</option>
+                                <option value="5" selected>Within 5 miles</option>
+                                <option value="10">Within 10 miles</option>
+                                <option value="15">Within 15 miles</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="endLocationRadius">End Location Radius (miles)</label>
+                            <select id="endLocationRadius" name="endLocationRadius" class="form-input">
+                                <option value="1">Within 1 mile</option>
+                                <option value="3">Within 3 miles</option>
+                                <option value="5" selected>Within 5 miles</option>
+                                <option value="10">Within 10 miles</option>
+                                <option value="15">Within 15 miles</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="timeWindow">Time Flexibility (minutes)</label>
+                            <select id="timeWindow" name="timeWindow" class="form-input">
+                                <option value="15">±15 minutes</option>
+                                <option value="30" selected>±30 minutes</option>
+                                <option value="60">±1 hour</option>
+                                <option value="120">±2 hours</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <label for="smokingPreference">Smoking Preference</label>
+                            <select id="smokingPreference" name="smokingPreference" class="form-input">
+                                <option value="">No preference</option>
+                                <option value="No Smoking">No Smoking</option>
+                                <option value="Smoking OK">Smoking OK</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="musicPreference">Music Preference</label>
+                            <select id="musicPreference" name="musicPreference" class="form-input">
+                                <option value="">No preference</option>
+                                <option value="Pop">Pop</option>
+                                <option value="Rock">Rock</option>
+                                <option value="Hip-Hop">Hip-Hop</option>
+                                <option value="Country">Country</option>
+                                <option value="Classical">Classical</option>
+                                <option value="Electronic">Electronic</option>
+                                <option value="Indie">Indie</option>
+                                <option value="No Music/Quiet">No Music/Quiet</option>
+                                <option value="Any">Any/No Preference</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="talkativeLevel">Conversation Level</label>
+                            <select id="talkativeLevel" name="talkativeLevel" class="form-input">
+                                <option value="">No preference</option>
+                                <option value="Quiet">Quiet - Minimal conversation</option>
+                                <option value="Moderate">Moderate - Some conversation</option>
+                                <option value="Chatty">Chatty - Love to talk</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="petsPolicy">Pets Policy</label>
+                            <select id="petsPolicy" name="petsPolicy" class="form-input">
+                                <option value="">No preference</option>
+                                <option value="No Pets">No Pets</option>
+                                <option value="Pets OK">Pets OK</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button type="submit" class="btn btn-primary">Find Matches</button>
+                        <button type="button" class="btn btn-secondary" onclick="clearFilters()">Clear Filters</button>
+                        <button type="button" class="btn btn-secondary" onclick="saveFilters()">Save Search</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Matches Results -->
+            <div class="matches-section">
+                <div class="matches-header">
+                    <h2 class="section-title">Your Matches</h2>
+                    <div class="matches-count">
+                        <span id="matchesCount">Loading matches...</span>
+                    </div>
+                </div>
+                
+                <div class="matches-container" id="matchesContainer">
+                    <!-- Matches will be loaded here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Buddy Priority Section -->
+            <div class="buddy-priority-section">
+                <h2 class="section-title">Priority Matches</h2>
+                <p>Your carpooling buddies get priority in search results. <a href="buddies.html">Manage your buddies</a></p>
+                <div class="buddy-matches" id="buddyMatches">
+                    <p class="no-data">No buddy matches found for your current search.</p>
+                </div>
+            </div>
+
+            <!-- Search Tips -->
+            <div class="search-tips-section">
+                <h2 class="section-title">Search Tips</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h3>Be Flexible</h3>
+                        <p>Increase your time window and location radius to find more matches.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Complete Your Profile</h3>
+                        <p>A complete profile helps us find better matches based on your preferences.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Try Different Times</h3>
+                        <p>Search for rides at different times of day to see all available options.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h3>Join Groups</h3>
+                        <p>Create or join groups with friends and classmates for regular carpooling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="findmatches.html">Find Matches</a></li>
+                            <li><a href="groups.html">Groups</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        function clearFilters() {
+            document.getElementById('filtersForm').reset();
+            // Reload initial matches
+            loadInitialMatches();
+        }
+
+        function saveFilters() {
+            const formData = new FormData(document.getElementById('filtersForm'));
+            const filters = Object.fromEntries(formData);
+            localStorage.setItem('buckeyeride_saved_filters', JSON.stringify(filters));
+            showSuccessMessage('Search filters saved!');
+        }
+
+        // Load saved filters on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedFilters = localStorage.getItem('buckeyeride_saved_filters');
+            if (savedFilters) {
+                const filters = JSON.parse(savedFilters);
+                Object.keys(filters).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element && filters[key]) {
+                        element.value = filters[key];
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
