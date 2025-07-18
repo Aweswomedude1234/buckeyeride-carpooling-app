@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules - BuckeyeRide Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="../index.html">
+                        <h1>Buckeye<span class="logo-accent">Ride</span></h1>
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="profile.html" class="nav-link">Profile</a></li>
+                        <li><a href="schedules.html" class="nav-link active">Schedules</a></li>
+                        <li><a href="findmatches.html" class="nav-link">Find Matches</a></li>
+                        <li><a href="groups.html" class="nav-link">Groups</a></li>
+                        <li><a href="buddies.html" class="nav-link">Buddies</a></li>
+                        <li><a href="ride.html" class="nav-link">Ride</a></li>
+                        <li><a href="#" class="nav-link" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main" class="dashboard-main">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Manage Your Schedules</h1>
+                <p>Add your regular routes and times to find compatible carpool partners.</p>
+            </div>
+
+            <div class="schedules-container">
+                <!-- Add Schedule Form -->
+                <div class="schedule-form-section">
+                    <h2 class="section-title">Add New Schedule</h2>
+                    <form class="schedule-form" id="scheduleForm">
+                        <div class="form-group">
+                            <label for="day">Day of Week</label>
+                            <select id="day" name="day" class="form-input" required>
+                                <option value="">Select day</option>
+                                <option value="monday">Monday</option>
+                                <option value="tuesday">Tuesday</option>
+                                <option value="wednesday">Wednesday</option>
+                                <option value="thursday">Thursday</option>
+                                <option value="friday">Friday</option>
+                                <option value="saturday">Saturday</option>
+                                <option value="sunday">Sunday</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="startLocation">Start Location</label>
+                            <input 
+                                type="text" 
+                                id="startLocation" 
+                                name="startLocation" 
+                                class="form-input" 
+                                placeholder="e.g., My apartment, North Campus"
+                                required
+                            >
+                            <small class="form-help">Be specific but don't include your exact address</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="endLocation">End Location</label>
+                            <input 
+                                type="text" 
+                                id="endLocation" 
+                                name="endLocation" 
+                                class="form-input" 
+                                placeholder="e.g., Thompson Library, Downtown Columbus"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="startTime">Departure Time</label>
+                                <input 
+                                    type="time" 
+                                    id="startTime" 
+                                    name="startTime" 
+                                    class="form-input" 
+                                    required
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="endTime">Return Time (optional)</label>
+                                <input 
+                                    type="time" 
+                                    id="endTime" 
+                                    name="endTime" 
+                                    class="form-input"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="scheduleType">Schedule Type</label>
+                            <select id="scheduleType" name="scheduleType" class="form-input" required>
+                                <option value="">Select type</option>
+                                <option value="offering">I'm offering a ride</option>
+                                <option value="seeking">I'm seeking a ride</option>
+                                <option value="both">Either offering or seeking</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="recurring" id="recurring" checked>
+                                <span class="checkmark"></span>
+                                This is a recurring weekly schedule
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea 
+                                id="notes" 
+                                name="notes" 
+                                class="form-input" 
+                                rows="3" 
+                                placeholder="Any additional details about your schedule, flexibility, etc."
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Add Schedule
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Current Schedules -->
+                <div class="schedule-list-section">
+                    <h2 class="section-title">Your Current Schedules</h2>
+                    <div id="schedulesList">
+                        <!-- Schedules will be loaded here by JavaScript -->
+                    </div>
+                    
+                    <div class="schedule-tips">
+                        <h3>Tips for Better Matches</h3>
+                        <ul>
+                            <li>Be specific about locations but maintain privacy</li>
+                            <li>Add multiple schedules for different days</li>
+                            <li>Include flexibility in your notes</li>
+                            <li>Update schedules when your routine changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions-section">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="quick-actions-grid">
+                    <div class="quick-action-card">
+                        <h3>Find Matches</h3>
+                        <p>Search for compatible riders based on your schedules</p>
+                        <a href="findmatches.html" class="btn btn-primary">Find Matches</a>
+                    </div>
+                    <div class="quick-action-card">
+                        <h3>Create Group</h3>
+                        <p>Start a carpooling group with friends or classmates</p>
+                        <a href="groups.html" class="btn btn-secondary">Create Group</a>
+                    </div>
+                    <div class="quick-action-card">
+                        <h3>Share with Groups</h3>
+                        <p>Share your schedules with existing groups</p>
+                        <button class="btn btn-secondary" onclick="shareWithGroups()">Share Schedules</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>BuckeyeRide</h3>
+                    <p>Connecting Buckeyes, one ride at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Dashboard</h4>
+                        <ul>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="findmatches.html">Find Matches</a></li>
+                            <li><a href="groups.html">Groups</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BuckeyeRide Technologies Inc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        function shareWithGroups() {
+            showNotification('Group sharing feature coming soon!', 'info');
+        }
+    </script>
+</body>
+</html>
