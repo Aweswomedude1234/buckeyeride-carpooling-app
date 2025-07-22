@@ -42,8 +42,10 @@
 
                     <div class="auth-form-section">
                         <h2>Sign up with Google</h2>
-                        <p>Join RideConnect using your Google account for quick and secure access</p>
-                        <div id="google-signup-container" class="google-signup-container"></div>
+                        <p>Join BuckeyeRide using your Google account for quick and secure access</p>
+                        <button type="button" id="google-signup-btn" class="btn btn-secondary btn-full">
+                            Sign up with Google
+                        </button>
                         
                         <div class="auth-divider">
                             <span>or</span>
@@ -239,7 +241,8 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/auth.js"></script>
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/auth.js"></script>
 </body>
 </html>
