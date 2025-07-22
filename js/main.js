@@ -1,4 +1,6 @@
 // Main JavaScript for BuckeyeRide
+const GOOGLE_MAPS_API_KEY = 'AIzaSyDqrfDOyzWU59_5dz__gHWzlItX4MXDWLg';
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
@@ -10,6 +12,77 @@ function initializeApp() {
     setupSmoothScrolling();
     setupFormValidation();
     setupAccessibility();
+    loadGoogleMaps();
+    setupLocationSearch();
+}
+
+// Load Google Maps API
+function loadGoogleMaps() {
+    if (document.querySelector('#map') || document.querySelector('.location-input') || document.querySelector('#pickup') || document.querySelector('#dropoff')) {
+        // Check if we're running on HTTPS or localhost (required for Google Maps)
+        const isSecure = window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        
+        if (!isSecure) {
+            console.warn('Google Maps requires HTTPS or localhost. Current protocol:', window.location.protocol);
+            showNotification('Google Maps features require HTTPS. Please use a local development server.', 'warning');
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+        
+        script.onload = () => {
+            console.log('Google Maps API loaded successfully');
+            initLocationSearch();
+        };
+        
+        script.onerror = () => {
+            console.error('Failed to load Google Maps API');
+            showNotification('Failed to load Google Maps. Please check your internet connection.', 'error');
+        };
+    }
+}
+
+// Setup location search with Google Places
+function setupLocationSearch() {
+    const pickupInput = document.getElementById('pickup');
+    const dropoffInput = document.getElementById('dropoff');
+    
+    if (pickupInput && typeof google !== 'undefined') {
+        const pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {
+            types: ['address'],
+            componentRestrictions: { country: 'us' }
+        });
+        
+        pickupAutocomplete.addListener('place_changed', () => {
+            const place = pickupAutocomplete.getPlace();
+            if (place.geometry) {
+                console.log('Pickup location:', place.formatted_address);
+            }
+        });
+    }
+    
+    if (dropoffInput && typeof google !== 'undefined') {
+        const dropoffAutocomplete = new google.maps.places.Autocomplete(dropoffInput, {
+            types: ['address'],
+            componentRestrictions: { country: 'us' }
+        });
+        
+        dropoffAutocomplete.addListener('place_changed', () => {
+            const place = dropoffAutocomplete.getPlace();
+            if (place.geometry) {
+                console.log('Dropoff location:', place.formatted_address);
+            }
+        });
+    }
+}
+
+// Initialize location search
+function initLocationSearch() {
+    setupLocationSearch();
 }
 
 // Global error handling
