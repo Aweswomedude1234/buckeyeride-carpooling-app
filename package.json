@@ -1,0 +1,14 @@
+{
+  "name": "buckeyeride-website",
+  "version": "1.0.0",
+  "description": "BuckeyeRide - Ride Better Together",
+  "main": "server-enhanced.js",
+  "scripts": {
+    "start": "node server-enhanced.js",
+    "dev": "node server-enhanced.js",
+    "serve": "node server-enhanced.js"
+  },
+  "keywords": ["carpooling", "rideshare", "osu", "buckeyes"],
+  "author": "BuckeyeRide Team",
+  "license": "MIT"
+}
